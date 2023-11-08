@@ -34,5 +34,7 @@ int main(void)
     printf("t: %s\n", t);
     printf("s: %p\n", s);
     printf("t: %p\n", t);
-}
 
+    free(t);
+    return 0;
+}
