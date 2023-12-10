@@ -5,7 +5,7 @@ import sys
 import random
 
 # Number of simulations to run
-N = 1000
+N = 10000
 
 
 def main():
@@ -16,9 +16,24 @@ def main():
 
     teams = []
     # TODO: Read teams into memory from file
+    with open(sys.argv[1]) as file:
+        file_reader = csv.DictReader(file)
+        for team in file_reader:
+            teams.append(team)
+            # print(team)
+    for team in teams:
+        team["rating"] = int(team["rating"])
 
     counts = {}
     # TODO: Simulate N tournaments and keep track of win counts
+    i = 0
+    while i < N:
+        winner = simulate_tournament(teams)
+        if winner in counts:
+            counts[winner] += 1
+        else:
+            counts[winner] = 1
+        i += 1
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
@@ -50,7 +65,11 @@ def simulate_round(teams):
 def simulate_tournament(teams):
     """Simulate a tournament. Return name of winning team."""
     # TODO
-
+    winners = teams
+    while len(winners) > 1:
+        winners = simulate_round(winners)
+    
+    return winners[0]["team"]
 
 if __name__ == "__main__":
     main()
