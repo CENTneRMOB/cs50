@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+            rel="stylesheet"
+        />
+        <link href="styles.css" rel="stylesheet" />
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelector('#q1_button1').onclick = function () {
+                    document.querySelector('#q1_answer').innerHTML = 'Incorrect';
+                    this.style.backgroundColor = 'red';
+                };
+                document.querySelector('#q1_button2').onclick = function () {
+                    document.querySelector('#q1_answer').innerHTML = 'Incorrect';
+                    this.style.backgroundColor = 'red';
+                };
+                document.querySelector('#q1_button3').onclick = function () {
+                    document.querySelector('#q1_answer').innerHTML = 'Correct!';
+                    this.style.backgroundColor = 'green';
+                };
+
+                const rightAnswer = 'george washington';
+
+                document.querySelector('#q2_button').onclick = function () {
+                    let answer = document.querySelector('#input1').value;
+
+                    if (rightAnswer !== answer.toLowerCase()) {
+                        document.querySelector('#q2_answer').innerHTML = 'Incorrect';
+
+                        document.querySelector('#input1').style.backgroundColor = 'red';
+                    } else {
+                        document.querySelector('#q2_answer').innerHTML = 'Correct!';
+
+                        document.querySelector('#input1').style.backgroundColor = 'green';
+                    }
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice</h2>
+                <hr />
+                <!-- TODO: Add multiple choice question here -->
+                <h3 id="q1">Which quarterback has most count of Super Bowl rings?</h3>
+                <p id="q1_answer"></p>
+                <button id="q1_button1">Aaron Rogers</button>
+                <button id="q1_button2">Peyton Manning</button>
+                <button id="q1_button3">Tom Brady</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr />
+                <!-- TODO: Add free response question here -->
+                <h3 id="q2">Who was the first president of USA?</h3>
+                <p id="q2_answer"></p>
+                <input id="input1" />
+                <button id="q2_button" type="submit">Answer</button>
+            </div>
+        </div>
+    </body>
+</html>
