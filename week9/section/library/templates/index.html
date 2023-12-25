@@ -1,0 +1,26 @@
+{% extends "layout.html" %} {% block body %}
+<h1 class="mt-5">Library of Babel</h1>
+
+<form action="/" method="post">
+    <input type="text" name="page" />
+    <button type="submit">Search</button>
+</form>
+
+<p class="text-break mt-3">{{ random_string }}</p>
+
+<!-- TODO: Implement a search history table -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Search History</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for page in pages %}
+        <tr>
+            <td>{{ page.page }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
