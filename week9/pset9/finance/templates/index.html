@@ -1,0 +1,36 @@
+{% extends "layout.html" %} {% block title %} Index {% endblock %} {% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Stock</td>
+            <td>Quantity</td>
+            <td>Current price</td>
+            <td>Current position price</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.count }}</td>
+            <td>{{ stock.price | usd }}</td>
+            <td>{{ stock.position_price | usd }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Cash:</td>
+            <td>{{ current_cash | usd }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Grand total:</td>
+            <td>{{ grand_total | usd }}</td>
+        </tr>
+    </tfoot>
+</table>
+{% endblock %}

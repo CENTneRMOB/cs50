@@ -1,0 +1,32 @@
+{% extends "layout.html" %} {% block title %} History {% endblock %} {% block main %}
+<table class="table">
+    <thead>
+        <tr>
+            <td>Operation type</td>
+            <td>Stock symbol</td>
+            <td>Purchase price</td>
+            <td>Number of shares</td>
+            <td>Purchase date</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for purchase in purchases %} {% if purchase.type == "sell" %}
+        <tr class="table-danger">
+            <td>{{ purchase.type }}</td>
+            <td>{{ purchase.symbol }}</td>
+            <td>{{ purchase.stock_price | usd }}</td>
+            <td>{{ purchase.stock_count }}</td>
+            <td>{{ purchase.purchase_date }}</td>
+        </tr>
+        {% else %}
+        <tr class="table-success">
+            <td>{{ purchase.type }}</td>
+            <td>{{ purchase.symbol }}</td>
+            <td>{{ purchase.stock_price | usd }}</td>
+            <td>{{ purchase.stock_count }}</td>
+            <td>{{ purchase.purchase_date }}</td>
+        </tr>
+        {% endif %} {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
